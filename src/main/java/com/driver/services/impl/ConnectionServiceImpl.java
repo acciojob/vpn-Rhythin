@@ -76,7 +76,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         serviceProviderRepository2.save(minIdServiceProvider);
 
         //is it necessary? cascade might cause double entry
-        //userRepository2.save(user);
+        userRepository2.save(user);
 
         return  user;
     }
@@ -132,6 +132,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
         try {
             User updatedSender=connect(senderId, receiverCountryName);
+            userRepository2.save(updatedSender);
             return updatedSender;
         }
         catch (Exception e){
@@ -167,7 +168,7 @@ public class ConnectionServiceImpl implements ConnectionService {
             return CountryName.JPN;
         }
         else{
-            throw new Exception("invalid country name");
+            throw new Exception("Country not found");
         }
 
     }

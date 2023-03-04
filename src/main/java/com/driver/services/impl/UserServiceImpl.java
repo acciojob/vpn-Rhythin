@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
         // Note that right now user is not connected and thus connected would be false and maskedIp would be null
         //Note that the userId is created automatically by the repository layer
         if(!isValidCountryName(countryName)){
-            throw new Exception("invalid country name");
+            throw new Exception("Country not found");
         }
 
         //given to create new country for country name
@@ -102,7 +102,7 @@ public class UserServiceImpl implements UserService {
             return CountryName.JPN;
         }
         else{
-            throw new Exception("invalid country name");
+            throw new Exception("Country not found");
         }
 
     }

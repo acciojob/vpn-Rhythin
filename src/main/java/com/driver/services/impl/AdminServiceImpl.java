@@ -101,7 +101,7 @@ public class AdminServiceImpl implements AdminService {
             return CountryName.JPN;
         }
         else{
-            throw new Exception("invalid country name");
+            throw new Exception("Country not found");
         }
 
     }
