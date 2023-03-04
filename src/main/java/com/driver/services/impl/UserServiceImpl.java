@@ -8,7 +8,6 @@ import com.driver.repository.CountryRepository;
 import com.driver.repository.ServiceProviderRepository;
 import com.driver.repository.UserRepository;
 import com.driver.services.UserService;
-import jdk.internal.module.ServicesCatalog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,14 +40,14 @@ public class UserServiceImpl implements UserService {
         user.setUsername(username);
         user.setPassword(password);
         user.setConnected(false);
-        user.setCountry(country);
+        user.setOriginalCountry(country);
 
         country.setUser(user);
         //need to save first to get id for user
         userRepository3.save(user);
 
         String originalIP=country.getCode()+"."+user.getId();
-        user.setOriginalIP(originalIP);
+        user.setOriginalIp(originalIP);
 
         userRepository3.save(user);
 

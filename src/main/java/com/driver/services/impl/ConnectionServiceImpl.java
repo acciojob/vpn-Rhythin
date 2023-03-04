@@ -8,8 +8,6 @@ import com.driver.services.ConnectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ConnectionServiceImpl implements ConnectionService {
     @Autowired
@@ -31,7 +29,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         //2. Else if the countryName corresponds to the original country of the user, do nothing.
         // This means that the user wants to connect to its original country, for which we do not require a connection.
         // Thus, return the user as it is.
-        if(countryName.equalsIgnoreCase(user.getCountry().getCountryName().toString())){
+        if(countryName.equalsIgnoreCase(user.getOriginalCountry().getCountryName().toString())){
             return  user;
         }
 
@@ -69,7 +67,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         minIdServiceProvider.getConnectionList().add(connection);
 
         String maskedIP=countryCode+"."+minIdServiceProvider.getId()+"."+user.getId();
-        user.setMaskedIP(maskedIP);
+        user.setMaskedIp(maskedIP);
         user.setConnected(true);
         user.getConnectionList().add(connection);
 
@@ -93,7 +91,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
         //Else, disconnect from vpn, make masked Ip as null, update relevant attributes and return updated user.
         user.setConnected(false);
-        user.setMaskedIP(null);
+        user.setMaskedIp(null);
 
         userRepository2.save(user);
 
@@ -108,15 +106,15 @@ public class ConnectionServiceImpl implements ConnectionService {
         //If the receiver is connected to a vpn, his current country is the one he is connected to.
         //If the receiver is not connected to vpn, his current country is his original country.
         if(receiver.isConnected()){
-            receiverCountryCode=receiver.getMaskedIP().substring(0,3);
+            receiverCountryCode=receiver.getMaskedIp().substring(0,3);
             //since maskedIp format is "updatedCountryCode.serviceProviderId.userId" first part gives updated country code
         }
         else{
-            receiverCountryCode=receiver.getCountry().getCode();
+            receiverCountryCode=receiver.getOriginalCountry().getCode();
         }
 
         //The sender is initially not connected to any vpn so his country code is original country code.
-        String senderCountryCode=sender.getCountry().getCode();
+        String senderCountryCode=sender.getOriginalCountry().getCode();
 
         //If the sender's original country matches receiver's current country, we do not need to do anything as they can communicate.
         // Return the sender as it is.
