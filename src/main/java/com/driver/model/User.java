@@ -72,13 +72,13 @@ public class User {
         this.maskedIp = maskedIp;
     }
 
-    public boolean isConnected() {
-        return connected;
+    public Boolean isConnected() {
+        return this.connected;
     }
 
-    public boolean getConnected(){ return  connected; }
+    public Boolean getConnected(){ return  this.connected; }
 
-    public void setConnected(boolean connected) {
+    public void setConnected(Boolean connected) {
         this.connected = connected;
     }
 

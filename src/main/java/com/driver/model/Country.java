@@ -13,7 +13,7 @@ public class Country {
     private String code;
 
     @OneToOne
-    @JoinColumn
+    //@JoinColumn
     private User user;
 
     @ManyToOne
