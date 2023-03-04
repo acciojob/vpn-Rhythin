@@ -74,7 +74,7 @@ public class AdminServiceImpl implements AdminService {
     private boolean isValidCountryName(String countryName){
         //to be filled later
         if(countryName.equalsIgnoreCase("IND") ||
-        countryName.equalsIgnoreCase("UDA") ||
+        countryName.equalsIgnoreCase("USA") ||
         countryName.equalsIgnoreCase("AUS") ||
         countryName.equalsIgnoreCase("CHI") ||
         countryName.equalsIgnoreCase("JPN")   )
