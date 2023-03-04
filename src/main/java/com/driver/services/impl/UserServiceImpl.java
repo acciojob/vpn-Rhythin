@@ -70,14 +70,19 @@ public class UserServiceImpl implements UserService {
 
     private boolean isValidCountryName(String countryName){
         //to be filled later
-        if(countryName.equalsIgnoreCase("IND") || countryName.equalsIgnoreCase("USA") || countryName.equalsIgnoreCase("AUS") ||
-                countryName.equalsIgnoreCase("CHI") || countryName.equalsIgnoreCase("JPN")   ){
+        if (countryName.equalsIgnoreCase("IND")) {
             return true;
-        }
-
-
-        else
+        } else if (countryName.equalsIgnoreCase("USA")) {
+            return true;
+        } else if (countryName.equalsIgnoreCase("AUS")) {
+            return true;
+        } else if (countryName.equalsIgnoreCase("CHI")) {
+            return true;
+        } else if (countryName.equalsIgnoreCase("JPN")) {
+            return true;
+        } else {
             return false;
+        }
     }
 
     private CountryName getCountryName(String countryName) throws Exception {
