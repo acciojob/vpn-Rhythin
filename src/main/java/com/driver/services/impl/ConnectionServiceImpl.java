@@ -63,7 +63,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         Connection connection=new Connection();
         connection.setUser(user);
         connection.setServiceProvider(minIdServiceProvider);
-        connectionRepository2.save(connection);
+//        connectionRepository2.save(connection);
 
         minIdServiceProvider.getConnectionList().add(connection);
 
@@ -132,7 +132,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
         try {
             User updatedSender=connect(senderId, receiverCountryName);
-            userRepository2.save(updatedSender);
+//            userRepository2.save(updatedSender);
             return updatedSender;
         }
         catch (Exception e){
